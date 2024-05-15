@@ -20,11 +20,13 @@ header {
 }
 header div {
   margin: 20px 0px 5px 35px;
+  padding-right: 20px;
 }
 header div svg {
   height: 40px;
   margin-right: 35px;
 }
+
 
 main {
   color: #000046;
@@ -35,8 +37,9 @@ main {
 aside {
   background-color: white;
 }
+
 aside div {
-  padding-top: 20px;
+  margin-top: 20px;
 }
 aside div svg{
   height: 25px;
@@ -46,19 +49,26 @@ aside div p {
   margin: 0px;
 }
 
+
 form {
   background-color: white;
   display: grid;
   grid-template-columns: 40px 1fr;
+  gap: 10px;
   margin: 10px 10px 0px 10px;
   padding: 15px 10px 15px 10px;
   border-radius: 10px;
 }
 
-form svg {
-  height: 25px;
-  width: 25px;
-  padding: 5px;
+#userInitials {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin:0;
+  padding: 0;
+  font-size: 20px;
+  background-color: #64dc78;
+  color: #000046;
 }
 
 form div {
@@ -105,6 +115,10 @@ section {
 .section-title {
   display: flex;
   align-items: center;
+
+}
+.section-title div {
+  margin-left: 10px;
 }
 
 .section-title svg {
@@ -146,6 +160,7 @@ section p {
   padding: 5px 10px 10px 10px;
   background-color: #e6ebf5;
   border-radius: 10px;
+  margin-left: 10px;
 }
 
 .comments li p {

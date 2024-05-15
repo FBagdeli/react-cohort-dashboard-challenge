@@ -1,9 +1,9 @@
 // https://boolean-uk-api-server.fly.dev/fbagdeli/post
 const post = {
-  "id": 1,
-  "contactId": 4,
-  "title": "Ventosus cimentarius suus pecco.",
-  "content": "Vereor sapiente verus curvo attero spargo suadeo caelestis uter atque. Utroque suscipio ciminatio cursim tamdiu sodalitas ex. Pecco antepono vespillo facere umquam terebro taceo. Tondeo autem adhuc velum valens apto pauci. Comminor defessus certus taedium sto. Vado brevis cito conventus quibusdam sollers statim autem."
+  "id": 7,
+	"contactId": 1,
+	"title": "Ter desidero conscendo villa adicio.",
+	"content": "Astrum tersus solum animadverto animi. Abscido ad victoria. Velut color testimonium tres accedo aspernatur acquiro absens."
 }
 
 

@@ -37,23 +37,37 @@ function App() {
   }
 
   currentUser = contacts.find(contact => contact?.id === currentUserId)
-  
+
   useEffect(() => {
-    fetch(postUrl)
-      .then(res => res.json())
-      .then(setPosts)
+    const fetchData = async () => {
+      try {
+        const postsResponse = await fetch(postUrl)
+        const postsData = await postsResponse.json()
+        setPosts(postsData)
+
+        for (const post of postsData) {
+          const commentsResponse = await fetch(`${postUrl}/${post.id}/comment`)
+          const commentsData = await commentsResponse.json()
+          setComments(prevComments => ({
+            ...prevComments,
+            [post.id]: commentsData,
+          }))
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
   }, [])
+
+  // console.log('comments', comments)
 
   useEffect(() => {
     fetch(contactUrl)
       .then(res => res.json())
       .then(setContacts)
   }, [])
-
-  // console.log('posts', posts)
-  // console.log('contacts',contacts)
-  // console.log('current User', currentUser)
-  // console.log('userPost', userPost)
 
  
   function getInitials(user = {firstName : '', lastName : ''}) {
@@ -71,17 +85,13 @@ function App() {
     } else return 0
   }
 
-  function GetComments(post = {id:1}){
+  function GetComments(post){
     console.log('post', post.id)
     const urlcomments = `https://boolean-uk-api-server.fly.dev/fbagdeli/post/${post.id}/comment`
 
-    console.log('urlcomments', urlcomments)
-    useEffect(() => {
-      fetch(urlcomments)
-        .then(res => res.json())
-        .then(setComments)
-    }, [])
-    console.log('comments',comments)
+    // console.log('urlcomments', urlcomments)
+    
+    // console.log('comments',comments)
     return 'comments'
   }
 
@@ -144,11 +154,11 @@ function App() {
           </form>
           <ul className='feed'>
             {posts.map((post, index) => {
-               console.log('test' , post)
+              //  console.log('test' , post)
                const contactPost = contacts.find(contact => post.contactId === contact?.id)
-              //  console.log(contactPost)
+               console.log(comments.postId)
               const postId = post.id
-
+              
               return(
                 <li key={index}>
                   <section>
@@ -169,7 +179,9 @@ function App() {
                       </svg>
                       <div>
                         <p><span>{`GetComments({id:1})`}</span></p>
-                        <p>comments............asfasfafasdfasdf...............................</p>
+                        <p>comments............asfasfafasdfasdf...............................
+                          {postUrl}
+                        </p>
                       </div>
                     </li>
                   </ul>

@@ -61,8 +61,6 @@ function App() {
     fetchData()
   }, [])
 
-  // console.log('comments', comments)
-
   useEffect(() => {
     fetch(contactUrl)
       .then(res => res.json())
@@ -70,9 +68,16 @@ function App() {
   }, [])
 
  
-  function getInitials(user = {firstName : '', lastName : ''}) {
+  function getInitials (user = {firstName : '', lastName : ''}) {
     const userName = user.firstName.charAt(0) + user.lastName.charAt(0)
     if(userName === undefined) return ''
+    return userName
+  }
+
+  const GetCMInitials = (id) => {
+    const user = contacts.find(c => c.id === id)
+    if(user === undefined) return ''
+    const userName = user.firstName.charAt(0) + user.lastName.charAt(0)
     return userName
   }
 
@@ -85,17 +90,36 @@ function App() {
     } else return 0
   }
 
-  function GetComments(post){
-    console.log('post', post.id)
-    const urlcomments = `https://boolean-uk-api-server.fly.dev/fbagdeli/post/${post.id}/comment`
-
-    // console.log('urlcomments', urlcomments)
-    
-    // console.log('comments',comments)
-    return 'comments'
+  const GetNames = (id) => {
+    const user = contacts.find(c => c.id === id)
+    if(user === undefined) return ''
+    const userName = user.firstName+ ' ' + user.lastName
+    return userName
   }
 
-  GetComments({id : 1})
+  const GetComments = async (id) => {
+    const cm = comments[id]
+    if(cm !== undefined){
+      return cm
+    }
+    try {
+      const commentsResponse = await fetch(`${postUrl}/${id}/comment`)
+      const commentsData = await commentsResponse.json()
+      // Update the state with the newly fetched comments
+      setComments(prevComments => ({
+        ...prevComments,
+        [id]: commentsData,
+      }))
+      return commentsData
+    } catch (error) {
+      console.error(`Error fetching comments for post ${id}:`, error)
+      return 'Error fetching comments'
+    }
+  }
+//Adsuesco xiphias attonbitus. Culpa cursim celer adeo attero desolo teneo toties sint. Pel nihil brevis victoria spargo utrum.
+// console.log(posts)
+// console.log(contacts)
+// console.log(comments)
   return (
     <div className='homePage'>
       <header>
@@ -154,11 +178,8 @@ function App() {
           </form>
           <ul className='feed'>
             {posts.map((post, index) => {
-              //  console.log('test' , post)
                const contactPost = contacts.find(contact => post.contactId === contact?.id)
-               console.log(comments.postId)
-              const postId = post.id
-              
+              //  console.log(post)
               return(
                 <li key={index}>
                   <section>
@@ -173,17 +194,22 @@ function App() {
                   </section>
                   <ul className='comments'>
                     <p id='previous'>See previous comments</p>
-                    <li>
-                      <svg width="33" height="36" viewBox="0 0 33 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.5 36V12L16.6 0L32.5 12V36H20.8V21.75H12.15V36H0.5Z" fill="#64648C" />
-                      </svg>
-                      <div>
-                        <p><span>{`GetComments({id:1})`}</span></p>
-                        <p>comments............asfasfafasdfasdf...............................
-                          {postUrl}
-                        </p>
-                      </div>
-                    </li>
+
+                    {comments[post.id]?.map(c => {
+                    return (
+                      <li key={c.id}>
+                        {/* {console.log(c.contactId)} */}
+                      <button id='userInitials'>{GetCMInitials(c.contactId)}</button>
+                        <div>
+                          <p><span>{GetNames(c.contactId)}</span></p>
+                          <p>
+                          {c.content}
+                          </p>
+                        </div>
+                      </li>
+                          // <li key={c.id}></li>
+                        )}) || 'loading comments ... '}
+                    
                   </ul>
                   <div className='comments-input'>
                     <svg width="33" height="36" viewBox="0 0 33 36"   fill="none" xmlns="http://www.w3.org/2000/svg">

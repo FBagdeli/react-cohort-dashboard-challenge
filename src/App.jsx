@@ -14,19 +14,9 @@ function App() {
       lastName: "Zboncak",
       id: 1
     }])
-  const [posts, setPosts] = useState([{
-    "id": 13,
-    "postId": 3,
-    "contactId": 8,
-    "content": "Tantillus debeo cado circumvenio appello excepturi crustulum campana suadeo copia."
-  }])
+  const [posts, setPosts] = useState([])
 
-  const [comments, setComments] = useState([{
-      id: 13,
-      postId: 3,
-      contactId: 8,
-      content: "Tantillus debeo cado circumvenio appello excepturi crustulum campana suadeo copia."
-  }])
+  const [comments, setComments] = useState([])
   
   const currentUserId = 1
 

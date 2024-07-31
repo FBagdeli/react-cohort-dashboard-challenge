@@ -180,6 +180,7 @@ section p {
 .comments-input {
   display: grid;
   grid-template-columns: 35px 1fr;
+  gap: 15px;
   align-items: center;
   margin: 10px 10px 10px 0;
 }
@@ -195,13 +196,10 @@ section p {
   height: 20px;
   width: 20px;
   padding: 7px 5px 0px 10px;
-}
-
-.comments-input svg {
-  height: 25px;
-  width: 25px;
+  
   margin: 0px 10px 0px 0px;
 }
+
 .comments-input div input {
   border: none;
   border-radius: 10px;

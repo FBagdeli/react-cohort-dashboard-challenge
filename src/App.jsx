@@ -8,23 +8,14 @@ function App() {
   const postUrl = 'https://boolean-uk-api-server.fly.dev/fbagdeli/post'
   
   
-  const [contacts, setContacts] = useState([
-    {
-      firstName: "Laurel",
-      lastName: "Zboncak",
-      id: 1
-    }])
+  const [contacts, setContacts] = useState([])
   const [posts, setPosts] = useState([])
 
   const [comments, setComments] = useState([])
   
   const currentUserId = 1
 
-  let currentUser =  {
-    firstName: "Keenan",
-    lastName: "Ullrich-Lockman",
-    id: 1
-  }
+  let currentUser =  {}
 
   currentUser = contacts.find(contact => contact?.id === currentUserId)
 

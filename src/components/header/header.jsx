@@ -1,8 +1,6 @@
 import { getInitials } from "../../utils/functions";
 
-const Header = ({ contacts }) => {
-  const currentUserId = 1;
-  const currentUser = contacts.find((contact) => contact?.id === currentUserId);
+const Header = ({ currentUser }) => {
 
   return (
     <header>

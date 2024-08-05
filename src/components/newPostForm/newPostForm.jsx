@@ -1,6 +1,7 @@
-import { getInitials } from "../../utils/functions";
+
 import PlaceHolder from "../placeholder/postPlaceholder";
 import ProfileButton from "../buttons/profileButton";
+import PostButton from "../buttons/postButton";
 
 const NewPostForm = ({ currentUser }) => {
   return (
@@ -8,7 +9,7 @@ const NewPostForm = ({ currentUser }) => {
       <ProfileButton currentUser={currentUser}/>
       <div>
         <PlaceHolder/>
-        <button>Post</button>
+        <PostButton/>
       </div>
     </form>
   );

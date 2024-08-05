@@ -1,18 +1,17 @@
-import { GetCMInitials, GetNames } from "../../utils/functions"
-import UserCmInitials from "../buttons/userCmInitials"
+import { GetNames } from "../../utils/functions";
+import CommentAuthor from "../authorName/commentAuthor";
+import UserCmInitials from "../buttons/userCmInitials";
 
 const Comment = ({ c, contacts }) => {
   return (
     <li>
-      <UserCmInitials c={c} contacts={contacts}/>
+      <UserCmInitials c={c} contacts={contacts} />
       <div>
-        <p>
-          <span>{GetNames(c.contactId, contacts)}</span>
-        </p>
+        <CommentAuthor comment={c} contacts={contacts} />
         <p>{c.content}</p>
       </div>
     </li>
-  )
-}
+  );
+};
 
-export default Comment
+export default Comment;

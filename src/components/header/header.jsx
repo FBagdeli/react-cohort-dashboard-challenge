@@ -1,5 +1,5 @@
 import Logo from "../logo/logo";
-import ProfileButton from "../profileButton/profileButton";
+import ProfileButton from "../buttons/profileButton";
 
 const Header = ({ currentUser }) => {
 

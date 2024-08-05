@@ -1,12 +1,12 @@
 import Logo from "../logo/logo";
-import ProfileButton from "../buttons/profileButton";
+import InitialsButton from "../buttons/initialsButton";
 
 const Header = ({ currentUser }) => {
 
   return (
     <header>
       <Logo/>
-      <ProfileButton currentUser = { currentUser }/>
+      <InitialsButton currentUser = { currentUser }/>
     </header>
   );
 };

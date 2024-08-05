@@ -1,12 +1,12 @@
 
 import PlaceHolder from "../placeholder/postPlaceholder";
-import ProfileButton from "../buttons/profileButton";
 import PostButton from "../buttons/postButton";
+import InitialsButton from "../buttons/initialsButton";
 
 const NewPostForm = ({ currentUser }) => {
   return (
     <form>
-      <ProfileButton currentUser={currentUser}/>
+      <InitialsButton currentUser={currentUser}/>
       <div>
         <PlaceHolder/>
         <PostButton/>

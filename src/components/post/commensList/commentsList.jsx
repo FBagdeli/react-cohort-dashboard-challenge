@@ -1,29 +1,15 @@
-import { GetCMInitials, GetNames } from "../../../utils/functions";
+import Comment from "../../comment/comment";
 
 const CommentsList = ({ comments, post, contacts }) => {
   return (
     <ul className="comments">
-        <p id="previous">See previous comments</p>
+      <p id="previous">See previous comments</p>
 
-        {comments[post.id]?.map((c) => {
-          return (
-            <li key={c.id}>
-              {/* {console.log(c.contactId)} */}
-              <button id="userInitials">
-                {GetCMInitials(c.contactId, contacts)}
-              </button>
-              <div>
-                <p>
-                  <span>{GetNames(c.contactId, contacts)}</span>
-                </p>
-                <p>{c.content}</p>
-              </div>
-            </li>
-            // <li key={c.id}></li>
-          );
-        }) || "loading comments ... "}
-      </ul>
-  )
-}
+      {comments[post.id]?.map((c) => {
+        return <Comment key={c.id} c={c} contacts={contacts} />;
+      }) || "loading comments ... "}
+    </ul>
+  );
+};
 
-export default CommentsList
+export default CommentsList;

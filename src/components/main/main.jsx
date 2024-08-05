@@ -1,5 +1,4 @@
 import MainContent from "../mainContent/mainContent";
-import { GetCMInitials, getInitials, GetNames } from "../../utils/functions";
 import Aside from "../aside/aside";
 const Main = ({ currentUser, posts, contacts, comments }) => {
   return (

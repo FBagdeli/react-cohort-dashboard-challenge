@@ -1,5 +1,4 @@
 import NewPostForm from "../newPostForm/newPostForm.jsx";
-
 import PostsList from "../postsList/postsList.jsx";
 
 const MainContent = ({ currentUser, posts, contacts, comments }) => {

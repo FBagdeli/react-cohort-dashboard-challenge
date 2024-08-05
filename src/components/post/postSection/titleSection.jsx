@@ -1,18 +1,13 @@
-import { GetNames } from "../../../utils/functions"
-import ProfileButton from "../../buttons/profileButton"
+import InitialsButton from "../../buttons/initialsButton";
+import PostHeader from "./postHeader";
 
-const TitleSection = ({post, contactPost, contacts}) => {
+const TitleSection = ({ post, contactPost, contacts }) => {
   return (
-        <div className="section-title">
-          <ProfileButton currentUser={contactPost} />
-          <div>
-            <p id="title">{GetNames(post, contacts)}</p>
-            <p>
-              <span>{post.title}</span>
-            </p>
-          </div>
-        </div>
-  )
-}
+    <div className="section-title">
+      <InitialsButton currentUser={contactPost} />
+      <PostHeader post={post} contacts={contacts} />
+    </div>
+  );
+};
 
-export default TitleSection
+export default TitleSection;

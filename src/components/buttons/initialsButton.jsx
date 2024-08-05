@@ -1,6 +1,6 @@
 import { getInitials } from "../../utils/functions"
 
-const ProfileButton = ({ currentUser }) => {
+const InitialsButton = ({ currentUser }) => {
   return (
     <div>
         <button id="userInitials">{getInitials(currentUser)}</button>
@@ -8,4 +8,4 @@ const ProfileButton = ({ currentUser }) => {
   )
 }
 
-export default ProfileButton
+export default InitialsButton

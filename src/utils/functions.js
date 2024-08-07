@@ -17,7 +17,6 @@ export const GetCMInitials = (id, contacts) => {
   const userName = user.firstName.charAt(0) + user.lastName.charAt(0);
   return userName;
 };
-
 // function getNames(post = { contactId: 0 }) {
 //   // console.log('post', post)
 //   const contactObject = contacts.find(

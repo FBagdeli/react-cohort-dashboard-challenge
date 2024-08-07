@@ -11,7 +11,7 @@ function App() {
   const [contacts, setContacts] = useState([]);
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
-
+  const [newPostContent, setNewPostContent] = useState({});
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,7 +35,6 @@ function App() {
     fetchData();
   }, []);
 
-  
   useEffect(() => {
     fetch(contactUrl)
       .then((res) => res.json())
@@ -44,17 +43,38 @@ function App() {
 
   const currentUser = contactUrl.length > 0 ? contacts[0] : null;
 
-  
+  const newPostHandleSubmit = (event) => {
+    event.preventDefault();
+    console.log(newPostContent);
+    fetch(postUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(newPostContent),
+    })
+  };
+
+  const handleInputeSubmit = (event) => {
+
+    const content = event.target.value;
+    setNewPostContent({
+      "title":content,
+      "content": content,
+      "contactId": currentUser.id
+    })
+  };
   return (
     <div className="homePage">
       <Header currentUser={currentUser} />
       <Main
+        handleInputeSubmit={handleInputeSubmit}
+        newPostHandleSubmit={newPostHandleSubmit}
         currentUser={currentUser}
         posts={posts}
         contacts={contacts}
         comments={comments}
       />
-      
     </div>
   );
 }

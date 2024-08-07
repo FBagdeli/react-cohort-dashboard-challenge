@@ -3,7 +3,7 @@ import Post from "../post/post";
 const PostsList = ({ posts, contacts, comments }) => {
   return (
     <ul className="feed">
-      {posts.map((post, index) => {
+      {posts.toReversed().map((post, index) => {
         const contactPost = contacts.find(
           (contact) => post.contactId === contact?.id
         );

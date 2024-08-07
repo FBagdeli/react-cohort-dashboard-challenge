@@ -1,15 +1,17 @@
-
 import PlaceHolder from "../placeholder/postPlaceholder";
 import PostButton from "../buttons/postButton";
 import InitialsButton from "../buttons/initialsButton";
 
-const NewPostForm = ({ currentUser }) => {
+const NewPostForm = ({ handleInputeSubmit, handleSubmit, currentUser }) => {
   return (
     <form>
-      <InitialsButton currentUser={currentUser}/>
+      <InitialsButton currentUser={currentUser} />
       <div>
-        <PlaceHolder/>
-        <PostButton/>
+        <input
+          placeholder="whats on your mind?"
+          onChange={handleInputeSubmit}
+        ></input>
+        <button onClick={handleSubmit}>Post</button>;
       </div>
     </form>
   );

@@ -1,7 +1,5 @@
-const PostButton = () => {
-  return (
-    <button>Post</button>
-  )
-}
+const PostButton = ({ handleSubmit }) => {
+  return <button onClick={handleSubmit}>Post</button>;
+};
 
-export default PostButton
+export default PostButton;

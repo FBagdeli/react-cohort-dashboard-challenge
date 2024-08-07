@@ -1,7 +1,7 @@
-const PlaceHolder = () => {
+const PlaceHolder = ({ handleInputeSubmit }) => {
   return (
-    <input placeholder="whats on your mind?"></input>
-  )
-}
+    <input placeholder="whats on your mind?" onChange={handleInputeSubmit}></input>
+  );
+};
 
-export default PlaceHolder
+export default PlaceHolder;

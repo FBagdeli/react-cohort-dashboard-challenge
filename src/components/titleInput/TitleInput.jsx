@@ -1,6 +1,10 @@
-const TitleInput = ({ handleTitleInput }) => {
+const TitleInput = ({ handleTitleInput, }) => {
   return (
-    <input className="title" placeholder="whats on your mind?" onChange={handleTitleInput}></input>
+    <input
+      className="title"
+      placeholder="whats on your mind?"
+      onChange={handleTitleInput}
+    ></input>
   );
 };
 

@@ -4,16 +4,17 @@ import PostButton from "../buttons/postButton";
 import TitleInput from "../titleInput/TitleInput";
 
 export const NewPostModal = ({
+  handleContentInput,
   isFormVisible,
-  currentUser,
   toggleFormVisibility,
-  newPostHandleSubmit,
-  handleTitleInput
+  handleTitleInput,
+  newPostHandleButton,
+  currentUser,
 }) => {
   return (
     <>
       {isFormVisible && (
-        <form className="modal">
+        <form className="modal" onSubmit={newPostHandleButton}>
           <div>
             <InitialsButton currentUser={currentUser} />
             <TitleInput handleTitleInput={handleTitleInput} />
@@ -21,10 +22,11 @@ export const NewPostModal = ({
           <textarea
             className="caption"
             placeholder="write the caption ..."
-          ></textarea>
+            onChange={handleContentInput}
+          />
           <div className="form-buttons">
             <CloseButton toggleFormVisibility={toggleFormVisibility} />
-            <PostButton newPostHandleSubmit={newPostHandleSubmit} />
+            <PostButton />
           </div>
         </form>
       )}

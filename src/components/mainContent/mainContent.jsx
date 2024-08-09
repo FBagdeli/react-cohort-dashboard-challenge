@@ -2,10 +2,11 @@ import NewPostForm from "../newPostForm/newPostForm.jsx";
 import PostsList from "../postsList/postsList.jsx";
 
 const MainContent = ({
+  handleContentInput,
   isFormVisible,
   toggleFormVisibility,
   handleTitleInput,
-  newPostHandleSubmit,
+  newPostHandleButton,
   currentUser,
   posts,
   contacts,
@@ -14,10 +15,11 @@ const MainContent = ({
   return (
     <div className="main-content">
       <NewPostForm
+        handleContentInput={handleContentInput}
         isFormVisible={isFormVisible}
         toggleFormVisibility={toggleFormVisibility}
         handleTitleInput={handleTitleInput}
-        newPostHandleSubmit={newPostHandleSubmit}
+        newPostHandleButton={newPostHandleButton}
         currentUser={currentUser}
       />
       <PostsList posts={posts} contacts={contacts} comments={comments} />

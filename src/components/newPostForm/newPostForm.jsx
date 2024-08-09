@@ -1,31 +1,34 @@
-
 import PostButton from "../buttons/postButton";
 import InitialsButton from "../buttons/initialsButton";
 import { NewPostModal } from "./newPostModal";
 import TitleInput from "../titleInput/TitleInput";
 
 const NewPostForm = ({
+  handleContentInput,
   isFormVisible,
   toggleFormVisibility,
   handleTitleInput,
-  newPostHandleSubmit,
+  newPostHandleButton,
   currentUser,
 }) => {
   return (
-    <form>
-      <InitialsButton currentUser={currentUser} />
-      <div onClick={toggleFormVisibility}>
-        <TitleInput handleTitleInput={handleTitleInput} />
-        <PostButton newPostHandleSubmit={newPostHandleSubmit} />
-      </div>
+    <>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <InitialsButton currentUser={currentUser} />
+        <div onClick={toggleFormVisibility}>
+          <TitleInput handleTitleInput={handleTitleInput} />
+          <PostButton newPostHandleButton={newPostHandleButton} />
+        </div>
+      </form>
       <NewPostModal
+        handleContentInput={handleContentInput}
         isFormVisible={isFormVisible}
-        currentUser={currentUser}
         toggleFormVisibility={toggleFormVisibility}
-        newPostHandleSubmit={newPostHandleSubmit}
-        handleTitleInput = {handleTitleInput}
+        handleTitleInput={handleTitleInput}
+        newPostHandleButton={newPostHandleButton}
+        currentUser={currentUser}
       />
-    </form>
+    </>
   );
 };
 

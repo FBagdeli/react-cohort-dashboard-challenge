@@ -11,11 +11,13 @@ function App() {
   const [contacts, setContacts] = useState([]);
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
-  const [newPostContent, setNewPostContent] = useState({});
+  const [NewTitlePost, setNewTitlePost] = useState({});
   const [isFormVisible, setFormVisible] = useState(false);
+  const [newContentPost, setNewContentPost] = useState("");
+  
 
   const toggleFormVisibility = () => {
-    console.log('visible? ', isFormVisible)
+    console.log("visible? ", isFormVisible);
     setFormVisible(!isFormVisible);
   };
   useEffect(() => {
@@ -49,39 +51,45 @@ function App() {
 
   const currentUser = contactUrl.length > 0 ? contacts[0] : null;
 
-  const newPostHandleSubmit = (event) => {
+  const newPostHandleButton = (event) => {
     event.preventDefault();
+    setFormVisible(!isFormVisible)
     fetch(postUrl, {
       method: "POST",
       headers: {
         "Content-Type": "Application/json",
       },
-      body: JSON.stringify(newPostContent),
+      body: JSON.stringify({
+        title: NewTitlePost,
+        content: newContentPost,
+        contactId: currentUser.id
+      }),
     })
-    .then(res => res.json())
-    .then( data => console.log(data))
   };
 
   const handleTitleInput = (event) => {
+    event.preventDefault();
     const title = event.target.value;
-    console.log(title)
-    setNewPostContent({
-      title: title,
-      contactId: currentUser.id,
-    });
+    console.log('title: ',title);
+    setNewTitlePost(title);
   };
 
-  // const handleContentInput = (event) => {
-  //   const content = event.target.value
-  // }
+  const handleContentInput = (event) => {
+    event.preventDefault();
+    const content = event.target.value;
+    console.log('content: ',content);
+    setNewContentPost(content);
+  };
+
   return (
     <div className="homePage">
       <Header currentUser={currentUser} />
       <Main
+        handleContentInput={handleContentInput}
         isFormVisible={isFormVisible}
         toggleFormVisibility={toggleFormVisibility}
         handleTitleInput={handleTitleInput}
-        newPostHandleSubmit={newPostHandleSubmit}
+        newPostHandleButton={newPostHandleButton}
         currentUser={currentUser}
         posts={posts}
         contacts={contacts}

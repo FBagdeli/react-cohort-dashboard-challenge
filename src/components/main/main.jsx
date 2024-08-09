@@ -1,7 +1,9 @@
 import MainContent from "../mainContent/mainContent";
 import Aside from "../aside/aside";
 const Main = ({
-  handleInputeSubmit,
+  isFormVisible,
+  toggleFormVisibility,
+  handleTitleInput,
   newPostHandleSubmit,
   currentUser,
   posts,
@@ -12,7 +14,9 @@ const Main = ({
     <main>
       <Aside />
       <MainContent
-        handleInputeSubmit={handleInputeSubmit}
+        isFormVisible={isFormVisible}
+        toggleFormVisibility={toggleFormVisibility}
+        handleTitleInput={handleTitleInput}
         newPostHandleSubmit={newPostHandleSubmit}
         currentUser={currentUser}
         posts={posts}

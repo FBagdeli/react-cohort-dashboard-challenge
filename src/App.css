@@ -93,6 +93,71 @@ form button:hover {
   background-color: #64dc78;
 }
 
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column; 
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e6ebf5;
+  padding: 20px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  z-index: 1001;
+  justify-content: space-between; 
+}
+.modal div {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+}
+
+.title {
+  padding: 10px;
+  margin-top: 2px;
+
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.modal .caption{
+  padding: 10px;
+  flex-grow: 1;
+  margin-bottom: 10px; 
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  vertical-align: top;
+  text-align: left;
+  resize: none;
+}
+
+.modal div button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: center; 
+  margin-top: auto; 
+  background-color: #000046;
+  color: white;
+  height: 35px;
+  padding: 0;
+  width: 100%;
+}
+
+.modal .form-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.modal textarea {
+  vertical-align: top;
+  text-align: left;
+}
+
 .feed {
   display: grid;
   grid-template-rows: repeat(auto-fill, minmax(200px, 400px));
@@ -206,6 +271,6 @@ section p {
   border-radius: 10px;
   background-color: #e6ebf5;
   padding: 0px 10px 0px 10px;
-  height: 35px;
-  
+  height: 35px; 
 }
+

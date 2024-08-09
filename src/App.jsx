@@ -12,6 +12,12 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [newPostContent, setNewPostContent] = useState({});
+  const [isFormVisible, setFormVisible] = useState(false);
+
+  const toggleFormVisibility = () => {
+    console.log('visible? ', isFormVisible)
+    setFormVisible(!isFormVisible);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,7 +51,6 @@ function App() {
 
   const newPostHandleSubmit = (event) => {
     event.preventDefault();
-    console.log(newPostContent);
     fetch(postUrl, {
       method: "POST",
       headers: {
@@ -53,22 +58,29 @@ function App() {
       },
       body: JSON.stringify(newPostContent),
     })
+    .then(res => res.json())
+    .then( data => console.log(data))
   };
 
-  const handleInputeSubmit = (event) => {
-
-    const content = event.target.value;
+  const handleTitleInput = (event) => {
+    const title = event.target.value;
+    console.log(title)
     setNewPostContent({
-      "title":content,
-      "content": content,
-      "contactId": currentUser.id
-    })
+      title: title,
+      contactId: currentUser.id,
+    });
   };
+
+  // const handleContentInput = (event) => {
+  //   const content = event.target.value
+  // }
   return (
     <div className="homePage">
       <Header currentUser={currentUser} />
       <Main
-        handleInputeSubmit={handleInputeSubmit}
+        isFormVisible={isFormVisible}
+        toggleFormVisibility={toggleFormVisibility}
+        handleTitleInput={handleTitleInput}
         newPostHandleSubmit={newPostHandleSubmit}
         currentUser={currentUser}
         posts={posts}

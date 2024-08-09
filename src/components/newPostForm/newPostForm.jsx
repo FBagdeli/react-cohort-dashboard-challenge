@@ -1,18 +1,30 @@
-import PlaceHolder from "../placeholder/postPlaceholder";
+
 import PostButton from "../buttons/postButton";
 import InitialsButton from "../buttons/initialsButton";
+import { NewPostModal } from "./newPostModal";
+import TitleInput from "../titleInput/TitleInput";
 
-const NewPostForm = ({ handleInputeSubmit, handleSubmit, currentUser }) => {
+const NewPostForm = ({
+  isFormVisible,
+  toggleFormVisibility,
+  handleTitleInput,
+  newPostHandleSubmit,
+  currentUser,
+}) => {
   return (
     <form>
       <InitialsButton currentUser={currentUser} />
-      <div>
-        <input
-          placeholder="whats on your mind?"
-          onChange={handleInputeSubmit}
-        ></input>
-        <button onClick={handleSubmit}>Post</button>;
+      <div onClick={toggleFormVisibility}>
+        <TitleInput handleTitleInput={handleTitleInput} />
+        <PostButton newPostHandleSubmit={newPostHandleSubmit} />
       </div>
+      <NewPostModal
+        isFormVisible={isFormVisible}
+        currentUser={currentUser}
+        toggleFormVisibility={toggleFormVisibility}
+        newPostHandleSubmit={newPostHandleSubmit}
+        handleTitleInput = {handleTitleInput}
+      />
     </form>
   );
 };

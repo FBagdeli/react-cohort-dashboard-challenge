@@ -17,7 +17,6 @@ function App() {
   
 
   const toggleFormVisibility = () => {
-    console.log("visible? ", isFormVisible);
     setFormVisible(!isFormVisible);
   };
   useEffect(() => {
@@ -70,14 +69,12 @@ function App() {
   const handleTitleInput = (event) => {
     event.preventDefault();
     const title = event.target.value;
-    console.log('title: ',title);
     setNewTitlePost(title);
   };
 
   const handleContentInput = (event) => {
     event.preventDefault();
     const content = event.target.value;
-    console.log('content: ',content);
     setNewContentPost(content);
   };
 

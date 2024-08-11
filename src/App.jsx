@@ -13,9 +13,8 @@ function App() {
   const [comments, setComments] = useState([]);
   const [NewTitlePost, setNewTitlePost] = useState({});
   const [isFormVisible, setFormVisible] = useState(false);
-  const [newContentPost, setNewContentPost] = useState("");
-  
-
+  const [newContentPost, setNewContentPost] = useState(null);
+  const [commentInput, setCommentInput] = useState(null)
   const toggleFormVisibility = () => {
     setFormVisible(!isFormVisible);
   };
@@ -52,7 +51,7 @@ function App() {
 
   const newPostHandleButton = (event) => {
     event.preventDefault();
-    setFormVisible(!isFormVisible)
+    setFormVisible(!isFormVisible);
     fetch(postUrl, {
       method: "POST",
       headers: {
@@ -61,23 +60,39 @@ function App() {
       body: JSON.stringify({
         title: NewTitlePost,
         content: newContentPost,
-        contactId: currentUser.id
+        contactId: currentUser.id,
       }),
-    })
+    });
   };
 
   const handleTitleInput = (event) => {
-    event.preventDefault();
     const title = event.target.value;
     setNewTitlePost(title);
   };
 
   const handleContentInput = (event) => {
-    event.preventDefault();
     const content = event.target.value;
     setNewContentPost(content);
   };
 
+  const commentInputHandler = (event) => {
+    const textComment = event.target.value;
+    setCommentInput(textComment);
+  };
+
+  const newCommentButton = ({id}) => {
+    fetch(`${postUrl}/${id}/comment`, {
+      method: "POST",
+      headers: {
+        "Content-type": "Application/json",
+      },
+      body: JSON.stringify({
+        postId: id,
+        content: commentInput,
+        contactId: currentUser.id
+      })
+    });
+  };
   return (
     <div className="homePage">
       <Header currentUser={currentUser} />
@@ -91,6 +106,8 @@ function App() {
         posts={posts}
         contacts={contacts}
         comments={comments}
+        commentInputHandler={commentInputHandler}
+        newCommentButton={newCommentButton}
       />
     </div>
   );

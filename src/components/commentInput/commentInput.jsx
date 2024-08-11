@@ -1,13 +1,17 @@
-import SendLogo from "../logo/sendLogo"
+import SendButton from "../logo/sendLogo";
 
-const CommentInput = () => {
+const CommentInput = ({ commentInputHandler, newCommentButton, post }) => {
   return (
-    <div>
-        <input type="text" placeholder="Add a comment..."></input>
+    <div className="text-comment-input">
+      <input
+        type="text"
+        placeholder="Add a comment..."
+        onChange={commentInputHandler}
+      ></input>
 
-        <SendLogo />
-      </div>
-  )
-}
+      <SendButton newCommentButton={newCommentButton} post={post} />
+    </div>
+  );
+};
 
-export default CommentInput
+export default CommentInput;

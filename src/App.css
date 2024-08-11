@@ -243,6 +243,7 @@ section p {
   color: gray;
 }
 
+
 .comments-input {
   display: grid;
   grid-template-columns: 35px 1fr;
@@ -250,27 +251,32 @@ section p {
   align-items: center;
   margin: 10px 10px 10px 0;
 }
-.comments-input div {
+
+.text-comment-input {
   display: grid;
+  background-color: #e6ebf5;
+  grid-template-columns: 1fr 35px;
   position: relative;
+  border-radius: 10px;
 }
 
+.text-comment-input input {
+  background-color: #e6ebf5;
+  border: none;
+  height: 30px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
 
-.comments-input div svg {
-  position: absolute;
-  right: 0;
+.text-comment-input button {
+  background-color: #e6ebf5;
+  position: relative;
+  padding: 0;
+}
+
+#send-comment-svg {
+  position: relative;
+  padding: 5px;
   height: 20px;
   width: 20px;
-  padding: 7px 5px 0px 10px;
-  
-  margin: 0px 10px 0px 0px;
 }
-
-.comments-input div input {
-  border: none;
-  border-radius: 10px;
-  background-color: #e6ebf5;
-  padding: 0px 10px 0px 10px;
-  height: 35px; 
-}
-

@@ -6,10 +6,11 @@ const CommentsInput = ({
   commentInputHandler,
   newCommentButton,
   post,
+  currentUser
 }) => {
   return (
     <div className="comments-input">
-      <InitialsButton currentUser={contactPost} />
+      <InitialsButton currentUser={currentUser} />
       <CommentInput
         commentInputHandler={commentInputHandler}
         newCommentButton={newCommentButton}

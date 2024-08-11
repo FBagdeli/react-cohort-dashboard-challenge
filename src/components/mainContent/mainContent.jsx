@@ -30,6 +30,7 @@ const MainContent = ({
         comments={comments}
         commentInputHandler={commentInputHandler}
         newCommentButton={newCommentButton}
+        currentUser={currentUser}
       />
     </div>
   );

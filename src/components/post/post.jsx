@@ -8,7 +8,8 @@ const Post = ({
   comments,
   post,
   commentInputHandler,
-  newCommentButton
+  newCommentButton,
+  currentUser
 }) => {
   return (
     <li>
@@ -19,6 +20,7 @@ const Post = ({
         commentInputHandler={commentInputHandler}
         newCommentButton={newCommentButton}
         post={post}
+        currentUser={currentUser}
       />
     </li>
   );

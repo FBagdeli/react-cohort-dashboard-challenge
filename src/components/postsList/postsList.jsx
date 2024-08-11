@@ -5,13 +5,13 @@ const PostsList = ({
   contacts,
   comments,
   commentInputHandler,
-  newCommentButton
+  newCommentButton,
+  currentUser
 }) => {
   return (
     <ul className="feed">
       {posts.toReversed().map((post, index) => {
         const contactPost = contacts.find((contact) => {
-          
           return post.contactId === contact?.id;
         });
         
@@ -24,6 +24,7 @@ const PostsList = ({
             post={post}
             commentInputHandler={commentInputHandler}
             newCommentButton={newCommentButton}
+            currentUser={currentUser}
           />
         );
       })}

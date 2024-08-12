@@ -2,11 +2,11 @@
 import Author from "../../authorName/postAuthor";
 import PostTitle from "./postTitle";
 
-const PostHeader = ({ post , contacts}) => {
+const PostHeader = ({ post , contacts, openPostHandler}) => {
   return (
     <div>
       <Author post={post} contacts={contacts}/>
-      <PostTitle post={post} />
+      <PostTitle openPostHandler={openPostHandler} post={post} />
     </div>
   );
 };

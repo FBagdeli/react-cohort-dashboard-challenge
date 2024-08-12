@@ -6,7 +6,8 @@ const PostsList = ({
   comments,
   commentInputHandler,
   newCommentButton,
-  currentUser
+  currentUser,
+  openPostHandler,
 }) => {
   return (
     <ul className="feed">
@@ -14,7 +15,7 @@ const PostsList = ({
         const contactPost = contacts.find((contact) => {
           return post.contactId === contact?.id;
         });
-        
+
         return (
           <Post
             key={index}
@@ -25,6 +26,7 @@ const PostsList = ({
             commentInputHandler={commentInputHandler}
             newCommentButton={newCommentButton}
             currentUser={currentUser}
+            openPostHandler={openPostHandler}
           />
         );
       })}

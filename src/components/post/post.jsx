@@ -9,14 +9,19 @@ const Post = ({
   post,
   commentInputHandler,
   newCommentButton,
-  currentUser
+  currentUser,
+  openPostHandler,
 }) => {
   return (
     <li>
-      <PostSection post={post} contactPost={contactPost} contacts={contacts} />
+      <PostSection
+        post={post}
+        contactPost={contactPost}
+        contacts={contacts}
+        openPostHandler={openPostHandler}
+      />
       <CommentsList comments={comments} post={post} contacts={contacts} />
       <CommentsInput
-        contactPost={contactPost}
         commentInputHandler={commentInputHandler}
         newCommentButton={newCommentButton}
         post={post}

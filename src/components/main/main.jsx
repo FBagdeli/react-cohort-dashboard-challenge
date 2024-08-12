@@ -11,7 +11,8 @@ const Main = ({
   contacts,
   comments,
   commentInputHandler,
-  newCommentButton
+  newCommentButton,
+  openPostHandler,
 }) => {
   return (
     <main>
@@ -28,6 +29,7 @@ const Main = ({
         comments={comments}
         commentInputHandler={commentInputHandler}
         newCommentButton={newCommentButton}
+        openPostHandler={openPostHandler}
       />
     </main>
   );

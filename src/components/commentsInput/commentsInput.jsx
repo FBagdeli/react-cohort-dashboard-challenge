@@ -2,7 +2,6 @@ import InitialsButton from "../buttons/initialsButton";
 import CommentInput from "../commentInput/commentInput.jsx";
 
 const CommentsInput = ({
-  contactPost,
   commentInputHandler,
   newCommentButton,
   post,

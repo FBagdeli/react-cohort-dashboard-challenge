@@ -12,7 +12,8 @@ const MainContent = ({
   contacts,
   comments,
   commentInputHandler,
-  newCommentButton
+  newCommentButton,
+  openPostHandler,
 }) => {
   return (
     <div className="main-content">
@@ -31,6 +32,7 @@ const MainContent = ({
         commentInputHandler={commentInputHandler}
         newCommentButton={newCommentButton}
         currentUser={currentUser}
+        openPostHandler={openPostHandler}
       />
     </div>
   );

@@ -3,6 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import Header from "./components/header/header";
 import Main from "./components/main/main";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const contactUrl = "https://boolean-uk-api-server.fly.dev/fbagdeli/contact";
@@ -15,9 +16,11 @@ function App() {
   const [isFormVisible, setFormVisible] = useState(false);
   const [newContentPost, setNewContentPost] = useState(null);
   const [commentInput, setCommentInput] = useState(null)
+  const [specificPost, setSpecificPost] = useState(null)
   const toggleFormVisibility = () => {
     setFormVisible(!isFormVisible);
   };
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -93,6 +96,12 @@ function App() {
       })
     });
   };
+
+  const openPostHandler = (post) => {
+    // console.log(post)
+    const url = `${postUrl}/${post.id}`
+    navigate(url)
+  }
   return (
     <div className="homePage">
       <Header currentUser={currentUser} />
@@ -108,6 +117,7 @@ function App() {
         comments={comments}
         commentInputHandler={commentInputHandler}
         newCommentButton={newCommentButton}
+        openPostHandler={openPostHandler}
       />
     </div>
   );

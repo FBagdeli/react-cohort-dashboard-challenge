@@ -1,7 +1,7 @@
-const PostTitle = ({post}) => {
+const PostTitle = ({post, openPostHandler}) => {
   return (
     <p>
-      <span>{post.title}</span>
+      <span onClick={() => openPostHandler(post)}>{post.title}</span>
     </p>
   );
 };

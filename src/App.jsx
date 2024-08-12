@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { HomePage } from "./components/homepage/HomePage";
@@ -51,12 +50,19 @@ function App() {
             <HomePage
               currentUser={currentUser}
               contacts={contacts}
-              comments = {comments}
-              posts = {posts}
+              comments={comments}
+              posts={posts}
             />
           }
         />
-        <Route path="/:id" element={<PostPage />} />
+        <Route
+          path="/:id"
+          element={
+            <PostPage
+              currentUser={currentUser}
+            />
+          }
+        />
       </Routes>
     </>
   );

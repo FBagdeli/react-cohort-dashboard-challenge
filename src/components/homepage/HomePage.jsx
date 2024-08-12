@@ -5,7 +5,7 @@ import Header from "../header/header";
 import Main from "../main/main";
 import { useNavigate } from "react-router-dom";
 
-export const HomePage = ({currentUser, contacts, comments, posts}) => {
+export const HomePage = ({ currentUser, contacts, comments, posts }) => {
   const postUrl = "https://boolean-uk-api-server.fly.dev/fbagdeli/post";
 
   const [NewTitlePost, setNewTitlePost] = useState({});
@@ -63,9 +63,15 @@ export const HomePage = ({currentUser, contacts, comments, posts}) => {
     });
   };
 
-  const openPostHandler = (post) => {
+  const openPostHandler = (post, comments, contacts) => {
     const url = `/${post.id}`;
-    navigate(url);
+    navigate(url, {
+      state: {
+        post,
+        comments,
+        contacts
+      }
+    });
   };
   return (
     <div className="homePage">

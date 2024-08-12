@@ -18,6 +18,8 @@ const Post = ({
         post={post}
         contactPost={contactPost}
         openPostHandler={openPostHandler}
+        comments={comments}
+        contacts={contacts}
       />
       <CommentsList comments={comments} post={post} contacts={contacts} />
       <CommentsInput

@@ -1,13 +1,13 @@
 import InitialsButton from "../../buttons/initialsButton";
 import PostHeader from "./postHeader";
 
-const TitleSection = ({ post, contactPost, contacts, openPostHandler }) => {
+const TitleSection = ({ post, contactPost, openPostHandler }) => {
   return (
     <div className="section-title">
       <InitialsButton currentUser={contactPost} />
       <PostHeader
+        currentUser={contactPost}
         post={post}
-        contacts={contacts}
         openPostHandler={openPostHandler}
       />
     </div>

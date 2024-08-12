@@ -1,7 +1,6 @@
-import { GetNames } from "../../utils/functions";
 
-const Author = ({post, contacts}) => {
-  return <p id="title">{GetNames(post.id, contacts)}</p>;
+const Author = ({currentUser}) => {
+  return <p id="title">{currentUser?.firstName+ ' ' + currentUser?.lastName}</p>;
 };
 
 export default Author

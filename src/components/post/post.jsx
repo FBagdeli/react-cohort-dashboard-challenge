@@ -17,7 +17,6 @@ const Post = ({
       <PostSection
         post={post}
         contactPost={contactPost}
-        contacts={contacts}
         openPostHandler={openPostHandler}
       />
       <CommentsList comments={comments} post={post} contacts={contacts} />

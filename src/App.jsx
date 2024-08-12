@@ -1,26 +1,17 @@
 import { useEffect } from "react";
-import "./App.css";
+
 import { useState } from "react";
-import Header from "./components/header/header";
-import Main from "./components/main/main";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { HomePage } from "./components/homepage/HomePage";
+import { PostPage } from "./components/postpage/PostPage";
 
 function App() {
   const contactUrl = "https://boolean-uk-api-server.fly.dev/fbagdeli/contact";
   const postUrl = "https://boolean-uk-api-server.fly.dev/fbagdeli/post";
 
-  const [contacts, setContacts] = useState([]);
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
-  const [NewTitlePost, setNewTitlePost] = useState({});
-  const [isFormVisible, setFormVisible] = useState(false);
-  const [newContentPost, setNewContentPost] = useState(null);
-  const [commentInput, setCommentInput] = useState(null)
-  const [specificPost, setSpecificPost] = useState(null)
-  const toggleFormVisibility = () => {
-    setFormVisible(!isFormVisible);
-  };
-  const navigate = useNavigate()
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,7 +34,7 @@ function App() {
 
     fetchData();
   }, []);
-
+  const [contacts, setContacts] = useState([]);
   useEffect(() => {
     fetch(contactUrl)
       .then((res) => res.json())
@@ -51,75 +42,23 @@ function App() {
   }, []);
 
   const currentUser = contactUrl.length > 0 ? contacts[0] : null;
-
-  const newPostHandleButton = (event) => {
-    event.preventDefault();
-    setFormVisible(!isFormVisible);
-    fetch(postUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify({
-        title: NewTitlePost,
-        content: newContentPost,
-        contactId: currentUser.id,
-      }),
-    });
-  };
-
-  const handleTitleInput = (event) => {
-    const title = event.target.value;
-    setNewTitlePost(title);
-  };
-
-  const handleContentInput = (event) => {
-    const content = event.target.value;
-    setNewContentPost(content);
-  };
-
-  const commentInputHandler = (event) => {
-    const textComment = event.target.value;
-    setCommentInput(textComment);
-  };
-
-  const newCommentButton = ({id}) => {
-    fetch(`${postUrl}/${id}/comment`, {
-      method: "POST",
-      headers: {
-        "Content-type": "Application/json",
-      },
-      body: JSON.stringify({
-        postId: id,
-        content: commentInput,
-        contactId: currentUser.id
-      })
-    });
-  };
-
-  const openPostHandler = (post) => {
-    // console.log(post)
-    const url = `${postUrl}/${post.id}`
-    navigate(url)
-  }
   return (
-    <div className="homePage">
-      <Header currentUser={currentUser} />
-      <Main
-        handleContentInput={handleContentInput}
-        isFormVisible={isFormVisible}
-        toggleFormVisibility={toggleFormVisibility}
-        handleTitleInput={handleTitleInput}
-        newPostHandleButton={newPostHandleButton}
-        currentUser={currentUser}
-        posts={posts}
-        contacts={contacts}
-        comments={comments}
-        commentInputHandler={commentInputHandler}
-        newCommentButton={newCommentButton}
-        openPostHandler={openPostHandler}
-      />
-    </div>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              currentUser={currentUser}
+              contacts={contacts}
+              comments = {comments}
+              posts = {posts}
+            />
+          }
+        />
+        <Route path="/:id" element={<PostPage />} />
+      </Routes>
+    </>
   );
 }
 
